@@ -1,0 +1,20 @@
+const config = {
+  BASE_URL: process.env.REACT_APP_BASE_URL,
+  FIREBASE_KEY: process.env.REACT_APP_FIREBASE_KEY,
+  FIREBASE_AUTH_DOMAIN: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  FIREBASE_PROJECT_ID: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  FIREBASE_STORAGE_BUCKET: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  FIREBASE_MESSAGING_SENDER_ID:
+    process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  FIREBASE_APP_ID: process.env.REACT_APP_FIREBASE_APP_ID,
+};
+
+export const FIREBASE_CONFIG = {
+  apiKey: config.FIREBASE_KEY,
+  authDomain: config.FIREBASE_AUTH_DOMAIN,
+  projectId: config.FIREBASE_PROJECT_ID,
+  storageBucket: config.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: config.FIREBASE_MESSAGING_SENDER_ID,
+  appId: config.FIREBASE_APP_ID,
+};
+export default config;

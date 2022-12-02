@@ -1,0 +1,108 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+.formWrapper {
+  margin-bottom: 2rem;
+}
+.authForm {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 16px !important;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.authForm .pbold {
+  font-weight: 600;
+  text-align: center;
+}
+.authForm h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}
+.authForm label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+}
+.formControl {
+  width: 100%;
+}
+.formControl input {
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  margin-bottom: 5px;
+}
+.validationMessage {
+  color: #ff0000;
+}
+.inputValidation {
+  border: 1px solid #ff0000;
+  outline: 2px solid #ff0000;
+  border-radius: 2px;
+}
+.signinOption {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.submitActions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 16px !important;
+}
+.submitActions button {
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  gap: 16px !important;
+}
+.submitActions .default {
+  background: #333;
+  color: #fff;
+}
+.submitActions .google img {
+  width: 30px;
+}
+.accountCheck {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #666;
+}
+.accountCheck a {
+  font-weight: 600;
+  color: #111;
+}

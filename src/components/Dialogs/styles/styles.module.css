@@ -1,0 +1,78 @@
+.pdialog {
+  width: 90vh;
+}
+.inputField {
+  background-color: #f1f1f1;
+  border: none;
+}
+.inputField input {
+  font-size: 12px;
+}
+.inputField textarea {
+  font-size: 12px;
+}
+.inputField:focus {
+  outline: none;
+  border: none;
+}
+.pheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3.5rem;
+  padding: 16px 8px 16px 16px;
+}
+.pheader .title {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+.pcontent {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.pcontent button {
+  margin-top: 1rem;
+  border-radius: 40px;
+  border: 1px solid #ccc;
+  font-weight: 600;
+  background-color: #333;
+  color: #fff;
+  margin-left: auto;
+  padding: 12px 48px;
+}
+.pcontent .grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(12, 1fr);
+}
+.pcontent .grid .gridItem {
+  grid-column: span 12;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 3.5px;
+}
+.pcontent .grid .gridItem2 {
+  grid-column: span 12;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+@media (min-width: 500px) {
+  .pdialog {
+    width: 480px;
+  }
+
+  .pcontent .grid .gridItem {
+    grid-column: span 5;
+  }
+  .pcontent .grid .gridItem2 {
+    grid-column: span 7;
+  }
+}

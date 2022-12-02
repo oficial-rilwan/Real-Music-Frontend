@@ -1,0 +1,144 @@
+.heading {
+  display: flex;
+  flex-direction: column;
+}
+.heading span {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.heading span:last-child {
+  font-weight: 400;
+  color: #666;
+}
+.heading span:last-child a {
+  font-size: 14px;
+}
+.heading span:last-child:hover a {
+  text-decoration: underline;
+}
+.tracksRow {
+  display: flex;
+  flex-direction: column;
+}
+.trackItem {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 32px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+.trackItem:hover {
+  background-color: #f1f1f1;
+}
+.details {
+  grid-column: span 6;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.detailsSM {
+  grid-column: span 8;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-overflow: ellipsis;
+}
+.playSec .index {
+  width: 34px !important;
+  display: flex;
+  justify-content: center;
+}
+
+.trackItem:hover .index {
+  display: none;
+}
+.trackItem .playPause {
+  display: none;
+}
+.trackItem:hover .playPause {
+  display: flex;
+}
+.details span {
+  font-size: 14px;
+  font-weight: 600;
+}
+.details .trackInfo {
+  font-size: 14px;
+  font-weight: 600;
+}
+.album {
+  grid-column: span 3;
+  font-weight: 500;
+  font-size: 14px;
+}
+.actions {
+  grid-column: span 3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+.actionsSM {
+  grid-column: span 4;
+}
+.details img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.details .trackInfo span {
+  display: block;
+}
+.details .trackInfo span:first-child {
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.details .trackInfo span:last-child {
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.details .trackInfo span:last-child a:hover {
+  text-decoration: underline;
+}
+.scIcon {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .hide {
+    display: none !important;
+  }
+  .trackItem {
+    padding: 8px 6px;
+    gap: 12px;
+  }
+  .actions {
+    grid-column: span 3;
+  }
+  .details {
+    grid-column: span 9;
+  }
+  .album {
+    display: none !important;
+  }
+  .details img {
+    width: 40px;
+    height: 40px;
+  }
+  .playSec {
+    display: none !important;
+  }
+  .scIcon {
+    display: block !important;
+  }
+}

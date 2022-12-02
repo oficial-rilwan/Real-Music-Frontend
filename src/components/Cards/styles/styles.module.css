@@ -1,0 +1,72 @@
+.trackGrid {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.trackItem {
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(2, 1fr);
+  overflow: hidden;
+  border-radius: 5px;
+  height: 60px;
+  width: 60px;
+}
+.trackItem .img_box {
+  overflow: hidden;
+}
+.trackItem .img_box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.empty_list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  width: 60px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.empty_list .icon {
+  font-size: 54px;
+}
+.content p {
+  font-weight: bold !important;
+  white-space: nowrap;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.content small {
+  color: #6c6b80;
+  font-size: 14px;
+  white-space: nowrap;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 768px) {
+  .trackGrid {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    align-items: flex-start;
+  }
+  .trackItem {
+    height: 180px;
+    width: 100%;
+    border-radius: 20px;
+  }
+  .empty_list {
+    height: 180px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+  }
+  .empty_list .icon {
+    font-size: 76px;
+  }
+}

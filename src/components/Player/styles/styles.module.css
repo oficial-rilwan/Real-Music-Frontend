@@ -1,0 +1,101 @@
+.player {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  background-color: #fff;
+  display: none;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 16px;
+  z-index: 50;
+}
+@media (max-width: 768px) {
+  .showPlayer {
+    display: flex;
+  }
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header .returnIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #333;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.header p {
+  font-weight: bold !important;
+  margin: 0;
+}
+.poster {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 20px;
+}
+.poster img {
+  width: 100%;
+  object-fit: cover;
+  height: 300px !important;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+.info p {
+  display: block;
+  font-weight: bold !important;
+  text-align: center;
+}
+
+.info small {
+  text-align: center;
+  display: block;
+}
+.playDetails .time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -12px;
+}
+.playDetails .time * {
+  font-size: 12px;
+}
+.action {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.action .play {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background-color: #ffbc5d;
+  border-radius: 50%;
+}
+.action .play * {
+  color: #fff;
+  font-size: 38px !important;
+}
+.iconSm {
+  font-size: 20px !important;
+  color: #333;
+}
+.iconMd {
+  font-size: 38px !important;
+  color: #333;
+}
