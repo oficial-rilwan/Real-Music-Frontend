@@ -42,17 +42,17 @@ function getGoogleAuthCredentials(
   setLoading(true);
   getRedirectResult(auth)
     .then((result: any) => {
-      const credential: any = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
+      // const credential: any = GoogleAuthProvider.credentialFromResult(result);
+      // const token = credential.accessToken;
       const user = result.user;
       signinUser(user, setLoading);
     })
     .catch((error) => {
       setLoading(false);
       //   const errorCode = error.code;
-      const errorMessage = error?.message;
-      const email = error?.customData?.email;
-      const credential = GoogleAuthProvider.credentialFromError(error);
+      // const errorMessage = error?.message;
+      // const email = error?.customData?.email;
+      // const credential = GoogleAuthProvider.credentialFromError(error);
     });
 }
 

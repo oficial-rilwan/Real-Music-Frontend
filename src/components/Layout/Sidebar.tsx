@@ -15,7 +15,7 @@ import { AuthContext } from "../../context/AuthContext";
 function Sidebar() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const { user } = useContext(AuthContext);
+  const { token: user } = useContext(AuthContext);
 
   return (
     <div className="sidebar">

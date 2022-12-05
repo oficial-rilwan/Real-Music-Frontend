@@ -1,4 +1,3 @@
-import Album from "../interface/Album";
 import httpService from "./httpService";
 
 class AlbumService {

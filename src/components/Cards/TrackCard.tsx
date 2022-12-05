@@ -1,7 +1,5 @@
-import React, { useContext } from "react";
 import Track from "../../interface/Track";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import PauseIcon from "@mui/icons-material/Pause";
 import { Link } from "react-router-dom";
 import PauseRoundedIcon from "@mui/icons-material/PauseRounded";
 

@@ -8,7 +8,7 @@ interface TrackProps {
 const AlbumCard = ({ album }: TrackProps) => {
   return (
     <div className="box">
-      <img src={album?.albumCover} />
+      <img src={album?.albumCover} alt="" />
       <div className="content">
         <p>
           <Link to={`/album/${album?._id}`}>{album?.name}</Link>
