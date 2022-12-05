@@ -4,6 +4,7 @@ export default interface User {
   email: string;
   gender: string;
   dateOfBirth: Date;
+  isAdmin: Boolean;
   profileImage: string;
   country: string;
   likes?: string[];

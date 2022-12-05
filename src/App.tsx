@@ -20,6 +20,10 @@ import Playlists from "./pages/playlist";
 import RecentlyPlayed from "./pages/recently-played";
 import Search from "./pages/search";
 import Trending from "./pages/trending";
+import Admin from "./pages/admin";
+import AdminTrack from "./pages/admin/track/index";
+import AdminArtiste from "./pages/admin/artiste";
+import AdminAlbum from "./pages/admin/album";
 
 const theme = createTheme({
   palette: {
@@ -87,6 +91,23 @@ function App() {
       element: <Artists />,
     },
     {
+      path: "/admin",
+      element: <Admin />,
+    },
+    {
+      path: "/admin/track",
+      element: <AdminTrack />,
+    },
+    {
+      path: "/admin/artiste",
+      element: <AdminArtiste />,
+    },
+    {
+      path: "/admin/album",
+      element: <AdminAlbum />,
+    },
+
+    {
       path: "/account/signup",
       element: <SignUp />,
     },
@@ -95,7 +116,7 @@ function App() {
       element: <SingleAlbum />,
     },
     {
-      path: "/artiste/:id",
+      path: "/artists/:id",
       element: <SingleArtiste />,
     },
     {

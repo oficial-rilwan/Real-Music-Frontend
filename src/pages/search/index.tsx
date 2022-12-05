@@ -94,11 +94,11 @@ const Search = () => {
                       Top result
                     </h4>
                     <Link to="/liked-songs">
-                      <div>
+                      <div style={{ height: "calc(100% - 45px)" }}>
                         <div className={styles.item}>
                           <div className={styles.content}>
                             <div>
-                              <Avatar
+                              <img
                                 className={styles.artisteAvatar}
                                 src={tracks[0]?.poster}
                                 alt={tracks[0]?.artiste?.name}
@@ -130,7 +130,7 @@ const Search = () => {
                 <div className="sec-title">
                   {artists && artists?.length > 0 && <h4>Artists</h4>}
                 </div>
-                <div className="items">
+                <div className="artists">
                   {artists?.map((item: Artiste) => (
                     <ArtisteCard key={item?._id} artiste={item} />
                   ))}

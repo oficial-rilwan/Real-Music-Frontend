@@ -1,17 +1,9 @@
 .banner {
+  margin: 0 auto;
   display: flex;
-  gap: 16px;
+  flex-direction: column;
   align-items: center;
-  padding: 16px;
-  margin-top: -200px;
-  padding-top: 300px;
-  background: rgb(135, 129, 236);
-  background: linear-gradient(
-    90deg,
-    rgba(135, 129, 236, 1) 0%,
-    rgba(13, 148, 231, 1) 35%,
-    rgba(1, 18, 102, 1) 100%
-  );
+  margin-bottom: 1.5rem;
 }
 .banner img {
   width: 200px;
@@ -19,17 +11,24 @@
   object-fit: cover;
   border-radius: 5px;
 }
+.text {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .banner p {
-  font-weight: 600;
-  color: #fff;
+  font-weight: bold !important;
+  text-align: center;
+  display: none;
 }
 .banner h2 {
-  font-size: 5rem;
-  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold !important;
 }
 .banner button {
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid #333;
   border-radius: 5px;
   padding: 4px 16px;
   font-weight: 600;
@@ -37,6 +36,27 @@
 }
 .banner button:focus {
   outline: 2px solid #ffffff94;
+}
+@media (min-width: 768px) {
+  .banner {
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: 1.5rem;
+  }
+  .banner p {
+    display: block;
+  }
+  .banner h2 {
+    font-size: 5rem;
+  }
+  .text {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 .trackHeader {
   display: flex;

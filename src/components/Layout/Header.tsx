@@ -187,47 +187,53 @@ const Header = () => {
           transformOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
-          {user ? (
-            <React.Fragment>
-              <MenuItem>
-                <ListItemIcon>
-                  <LaunchIcon fontSize="small" />
-                </ListItemIcon>
-                Profile
-              </MenuItem>
-              <MenuItem>
-                <ListItemIcon>
-                  <LaunchIcon fontSize="small" />
-                </ListItemIcon>
-                My account
-              </MenuItem>
-              <Divider />
+          {user && (
+            <MenuItem>
+              <ListItemIcon>
+                <LaunchIcon fontSize="small" />
+              </ListItemIcon>
+              Profile
+            </MenuItem>
+          )}
+          {user && (
+            <MenuItem>
+              <ListItemIcon>
+                <LaunchIcon fontSize="small" />
+              </ListItemIcon>
+              My account
+            </MenuItem>
+          )}
+          {user && (
+            <MenuItem>
+              <ListItemIcon>
+                <Settings fontSize="small" />
+              </ListItemIcon>
+              Settings
+            </MenuItem>
+          )}
 
-              <MenuItem>
-                <ListItemIcon>
-                  <Settings fontSize="small" />
-                </ListItemIcon>
-                Settings
-              </MenuItem>
-              <MenuItem>
-                <Link to="/admin">
-                  <span style={{ display: "flex", alignItems: "center" }}>
-                    <ListItemIcon>
-                      <AdminPanelSettingsIcon fontSize="small" />
-                    </ListItemIcon>
-                    Admin Dashboard
-                  </span>
-                </Link>
-              </MenuItem>
+          {user?.isAdmin && (
+            <MenuItem>
+              <Link to="/admin">
+                <span style={{ display: "flex", alignItems: "center" }}>
+                  <ListItemIcon>
+                    <AdminPanelSettingsIcon fontSize="small" />
+                  </ListItemIcon>
+                  Admin Dashboard
+                </span>
+              </Link>
+            </MenuItem>
+          )}
+          {user && (
+            <MenuItem onClick={logoutUser}>
+              <ListItemIcon>
+                <Logout fontSize="small" />
+              </ListItemIcon>
+              Logout
+            </MenuItem>
+          )}
 
-              <MenuItem onClick={logoutUser}>
-                <ListItemIcon>
-                  <Logout fontSize="small" />
-                </ListItemIcon>
-                Logout
-              </MenuItem>
-            </React.Fragment>
-          ) : (
+          {!user && (
             <MenuItem>
               <Link to="/auth">
                 <span style={{ display: "flex", alignItems: "center" }}>

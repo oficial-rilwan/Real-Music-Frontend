@@ -68,11 +68,13 @@ const SingleArtiste = () => {
   return (
     <React.Fragment>
       <SiteLayout>
-        <main style={{ marginBottom: "6rem" }}>
+        <main style={{ marginBottom: "7rem", padding: 16 }}>
           <section>
             <div className={styles.banner}>
-              <img src={artiste?.image} alt={artiste?.name} />
               <div>
+                <img src={artiste?.image} alt={artiste?.name} />
+              </div>
+              <div className={styles.text}>
                 <p>Artiste</p>
                 <h2>{artiste?.name}</h2>
                 {user?.followings?.includes(artiste?._id || "") ? (
@@ -83,13 +85,13 @@ const SingleArtiste = () => {
               </div>
             </div>
           </section>
-          <section style={{ marginTop: 20, padding: 16 }}>
+          <section style={{ marginTop: 20 }}>
             <div className="sec-title">
               <h4>Songs</h4>
             </div>
             <TrackTable tracks={tracks} />
           </section>
-          <section style={{ marginTop: 20, padding: 16 }} className="trending">
+          <section style={{ marginTop: 20 }} className="trending">
             <div className="sec-title">
               <h4>Albums</h4>
             </div>
