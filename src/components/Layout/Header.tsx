@@ -138,30 +138,20 @@ const Header = () => {
           </button>
         </form>
 
-        {!token ? (
-          <div className="auth-btn-gp">
-            <Link to="/account/signup">
-              <span className="default-btn">Sign up</span>
-            </Link>
-            <Link to="/auth">
-              <span className="primary-btn">Login</span>
-            </Link>
-          </div>
-        ) : (
-          <div tabIndex={0} onClick={handleClick} className="user">
-            {user?.profileImage ? (
-              <Avatar
-                style={{ width: 30, height: 30 }}
-                src={user?.profileImage}
-                alt={user?.name}
-              />
-            ) : (
-              <AccountCircleOutlinedIcon className="icon user-icon" />
-            )}
-            <span>{user?.name}</span>
-            <ArrowDropDownIcon className="icon arrow" />
-          </div>
-        )}
+        <div tabIndex={0} onClick={handleClick} className="user">
+          {user?.profileImage ? (
+            <Avatar
+              style={{ width: 30, height: 30 }}
+              src={user?.profileImage}
+              alt={user?.name}
+            />
+          ) : (
+            <AccountCircleOutlinedIcon className="icon user-icon" />
+          )}
+          <span>{user?.name}</span>
+          {/* <ArrowDropDownIcon className="icon arrow" /> */}
+        </div>
+
         <Menu
           anchorEl={anchorEl}
           id="account-menu"
@@ -197,42 +187,58 @@ const Header = () => {
           transformOrigin={{ horizontal: "right", vertical: "top" }}
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
-          <MenuItem>
-            <ListItemIcon>
-              <LaunchIcon fontSize="small" />
-            </ListItemIcon>
-            Profile
-          </MenuItem>
-          <MenuItem>
-            <ListItemIcon>
-              <LaunchIcon fontSize="small" />
-            </ListItemIcon>
-            My account
-          </MenuItem>
-          <Divider />
-
-          <MenuItem>
-            <ListItemIcon>
-              <Settings fontSize="small" />
-            </ListItemIcon>
-            Settings
-          </MenuItem>
-          <MenuItem>
-            <Link to="/admin">
-              <a style={{ display: "flex", alignItems: "center" }}>
+          {user ? (
+            <React.Fragment>
+              <MenuItem>
                 <ListItemIcon>
-                  <AdminPanelSettingsIcon fontSize="small" />
+                  <LaunchIcon fontSize="small" />
                 </ListItemIcon>
-                Admin Dashboard
-              </a>
-            </Link>
-          </MenuItem>
-          <MenuItem onClick={logoutUser}>
-            <ListItemIcon>
-              <Logout fontSize="small" />
-            </ListItemIcon>
-            Logout
-          </MenuItem>
+                Profile
+              </MenuItem>
+              <MenuItem>
+                <ListItemIcon>
+                  <LaunchIcon fontSize="small" />
+                </ListItemIcon>
+                My account
+              </MenuItem>
+              <Divider />
+
+              <MenuItem>
+                <ListItemIcon>
+                  <Settings fontSize="small" />
+                </ListItemIcon>
+                Settings
+              </MenuItem>
+              <MenuItem>
+                <Link to="/admin">
+                  <span style={{ display: "flex", alignItems: "center" }}>
+                    <ListItemIcon>
+                      <AdminPanelSettingsIcon fontSize="small" />
+                    </ListItemIcon>
+                    Admin Dashboard
+                  </span>
+                </Link>
+              </MenuItem>
+
+              <MenuItem onClick={logoutUser}>
+                <ListItemIcon>
+                  <Logout fontSize="small" />
+                </ListItemIcon>
+                Logout
+              </MenuItem>
+            </React.Fragment>
+          ) : (
+            <MenuItem>
+              <Link to="/auth">
+                <span style={{ display: "flex", alignItems: "center" }}>
+                  <ListItemIcon>
+                    <LaunchIcon fontSize="small" />
+                  </ListItemIcon>
+                  Sign in
+                </span>
+              </Link>
+            </MenuItem>
+          )}
         </Menu>
       </nav>
     </header>

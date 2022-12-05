@@ -52,6 +52,10 @@ export const PlayerContextProvider = ({
   const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
 
+  let title: any = document.querySelector("title");
+  if (isPlaying) title.textContent = currentTrack?.name;
+  else title.textContent = "Real Music App";
+
   let curmins: number | string =
     Math.floor(audio?.current?.currentTime / 60) || 0;
   let cursecs: number | string =
@@ -135,7 +139,7 @@ export const PlayerContextProvider = ({
     setPlaylistDialog((prev) => !prev);
   }
   function playPause() {
-    if (!user) return window.location.assign("/auth/signin");
+    if (!user) return window.location.assign("/auth");
     if (!isPlaying) {
       setIsPlaying(true);
       audio.current

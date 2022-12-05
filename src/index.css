@@ -659,6 +659,9 @@ button {
   overflow-y: auto;
   height: calc(100vh - 6.5rem);
 }
+.user-icon {
+  font-size: 1.8rem !important;
+}
 @media (max-width: 768px) {
   .nav-bar {
     gap: 12px !important;
