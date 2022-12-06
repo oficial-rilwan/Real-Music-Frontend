@@ -15,7 +15,7 @@ const AlbumCard = ({ album }: TrackProps) => {
         </p>
         <small>
           <Link to={`/artists/${album?.artiste?._id}`}>
-            <span>{album?.artiste?.name}</span>
+            {album?.artiste?.name}
           </Link>
         </small>
       </div>

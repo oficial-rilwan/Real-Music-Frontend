@@ -21,7 +21,7 @@
 }
 .inputField {
   background-color: #fff;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem !important;
 }
 .customInput {
   width: 100%;
@@ -30,7 +30,7 @@
   border: 1px solid #ccc;
   border-radius: 4.5px;
   background: #fff;
-  margin-bottom: 1rem;
+  margin-bottom: 1rem !important;
 }
 .customInput:hover {
   border: 1px solid #333;

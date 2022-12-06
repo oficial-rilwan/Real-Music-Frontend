@@ -153,7 +153,7 @@ export const PlayerContextProvider = ({
   }
 
   function mute() {
-    if (!user) return window.location.assign("/auth/signin");
+    if (!user) return window.location.assign("/auth");
     if (isMuted) {
       audio.current.muted = false;
       setIsMuted(false);
@@ -163,7 +163,7 @@ export const PlayerContextProvider = ({
     }
   }
   function next() {
-    if (!user) return window.location.assign("/auth/signin");
+    if (!user) return window.location.assign("/auth");
     if (currentTrackIndex === playlist.length - 1) {
       setCurrentTrackIndex(0);
       setCurrentTrack(playlist[0]);
@@ -174,7 +174,7 @@ export const PlayerContextProvider = ({
   }
 
   function prev() {
-    if (!user) return window.location.assign("/auth/signin");
+    if (!user) return window.location.assign("/auth");
     if (currentTrackIndex === 0) return;
     else {
       setCurrentTrackIndex((prev) => prev - 1);
@@ -183,20 +183,20 @@ export const PlayerContextProvider = ({
   }
 
   function handleVolume(_: any, value: any) {
-    if (!user) return window.location.assign("/auth/signin");
+    if (!user) return window.location.assign("/auth");
     setVolume(value);
     audio.current.volume = value / 100;
   }
 
   function handleSeek(_: any, value: any) {
-    if (!user) return window.location.assign("/auth/signin");
+    if (!user) return window.location.assign("/auth");
     setSeek(value);
     let seekTo = audio.current.duration * (value / 100);
     audio.current.currentTime = seekTo;
   }
 
   function switchTrack() {
-    if (!user) return window.location.assign("/auth/signin");
+    if (!user) return window.location.assign("/auth");
     try {
       if (currentTrackIndex === playlist?.length - 1) {
         setCurrentTrackIndex(0);
@@ -217,12 +217,12 @@ export const PlayerContextProvider = ({
   }
 
   function seekTimeUpdate() {
-    if (!user) return window.location.assign("/auth/signin");
+    if (!user) return window.location.assign("/auth");
     let nt = audio.current.currentTime * (100 / audio.current.duration);
     setSeek(nt);
   }
   function ChangePlaylistAndTrack(data: Track[], index: number) {
-    if (!user) return window.location.assign("/auth/signin");
+    if (!user) return window.location.assign("/auth");
     if (!isPlaying && currentTrack?._id === data[index]?._id) {
       setIsPlaying(true);
       audio.current
@@ -247,7 +247,7 @@ export const PlayerContextProvider = ({
     }
   }
   function pauseCurrentTrack() {
-    if (!user) return window.location.assign("/auth/signin");
+    if (!user) return window.location.assign("/auth");
     setIsPlaying(false);
     audio.current.pause();
   }

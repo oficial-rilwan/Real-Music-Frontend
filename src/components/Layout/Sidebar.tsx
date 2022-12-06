@@ -11,6 +11,7 @@ import EarbudsIcon from "@mui/icons-material/Earbuds";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../Logo";
 import { AuthContext } from "../../context/AuthContext";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 function Sidebar() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function Sidebar() {
       <div className="sidebar-links">
         <Link to="/">
           <span className={pathname == "/" ? "link active-link" : "link"}>
-            <AddHomeOutlinedIcon className="icon" /> <span>Home</span>
+            <HomeOutlinedIcon className="icon" /> <span>Home</span>
           </span>
         </Link>
         <Link to="/trending">

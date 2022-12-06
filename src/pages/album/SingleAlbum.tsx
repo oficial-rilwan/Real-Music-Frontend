@@ -36,17 +36,19 @@ const SingleAlbum = () => {
   return (
     <React.Fragment>
       <SiteLayout>
-        <main style={{ marginBottom: "6rem" }}>
+        <main style={{ marginBottom: "7rem", padding: 16 }}>
           <section>
             <div className={styles.banner}>
-              <img src={album?.albumCover} alt={album?.name} />
               <div>
+                <img src={album?.albumCover} alt={album?.name} />
+              </div>
+              <div className={styles.text}>
                 <p>Artiste • {album?.artiste?.name}</p>
                 <h2>{album?.name}</h2>
               </div>
             </div>
           </section>
-          <section style={{ marginTop: 20, padding: 16 }}>
+          <section style={{ marginTop: 20 }}>
             <div className="sec-title">
               <h4>Songs</h4>
             </div>

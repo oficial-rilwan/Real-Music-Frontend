@@ -23,6 +23,7 @@ import GroupIcon from "@mui/icons-material/Group";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import userService from "../../service/userService";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -44,11 +45,13 @@ const Header = () => {
     navigate("/search?keyword=" + query);
   }
   return (
-    <header style={{ zIndex: 10 }}>
+    <header
+      style={{ background: "#fff", zIndex: 10, position: "sticky", top: 0 }}
+    >
       <nav className="bottom-nav">
         <Link to="/">
           <span className={pathname === "/" ? "item active" : "item"}>
-            <AddHomeOutlinedIcon className="icon" />
+            <HomeOutlinedIcon className="icon" />
             <p>Home</p>
           </span>
         </Link>
@@ -137,20 +140,28 @@ const Header = () => {
             <img src="/assets/search-icon.png" alt="" />
           </button>
         </form>
-
-        <div tabIndex={0} onClick={handleClick} className="user">
-          {user?.profileImage ? (
-            <Avatar
-              style={{ width: 30, height: 30 }}
-              src={user?.profileImage}
-              alt={user?.name}
-            />
-          ) : (
-            <AccountCircleOutlinedIcon className="icon user-icon" />
-          )}
-          <span>{user?.name}</span>
-          {/* <ArrowDropDownIcon className="icon arrow" /> */}
-        </div>
+        {user && (
+          <div tabIndex={0} onClick={handleClick} className="user">
+            {user?.profileImage ? (
+              <Avatar
+                style={{ width: 30, height: 30 }}
+                src={user?.profileImage}
+                alt={user?.name}
+              />
+            ) : (
+              <AccountCircleOutlinedIcon className="icon user-icon" />
+            )}
+            <span>{user?.name}</span>
+            <ArrowDropDownIcon className="icon arrow" />
+          </div>
+        )}
+        {!user && (
+          <div className="user">
+            <Link style={{ fontWeight: "bold" }} to="/auth">
+              Sign in
+            </Link>
+          </div>
+        )}
 
         <Menu
           anchorEl={anchorEl}
@@ -189,18 +200,14 @@ const Header = () => {
         >
           {user && (
             <MenuItem>
-              <ListItemIcon>
-                <LaunchIcon fontSize="small" />
-              </ListItemIcon>
-              Profile
-            </MenuItem>
-          )}
-          {user && (
-            <MenuItem>
-              <ListItemIcon>
-                <LaunchIcon fontSize="small" />
-              </ListItemIcon>
-              My account
+              <Link to="/account/overview">
+                <span style={{ display: "flex", alignItems: "center" }}>
+                  <ListItemIcon>
+                    <LaunchIcon fontSize="small" />
+                  </ListItemIcon>
+                  My account
+                </span>
+              </Link>
             </MenuItem>
           )}
           {user && (

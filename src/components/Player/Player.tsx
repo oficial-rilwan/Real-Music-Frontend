@@ -89,11 +89,11 @@ const Player = () => {
       <div className="controls">
         <div className="first">
           <IconButton>
-            <ShuffleIcon className="icon" />
+            <ShuffleIcon style={{ fontSize: 20 }} className="icon" />
           </IconButton>
 
           <IconButton onClick={prev}>
-            <SkipPreviousIcon className="icon" style={{ fontSize: "2rem" }} />
+            <SkipPreviousIcon className="icon" />
           </IconButton>
 
           {isPlaying ? (
@@ -107,22 +107,22 @@ const Player = () => {
           )}
 
           <IconButton onClick={next}>
-            <SkipNextIcon className="icon" style={{ fontSize: "2rem" }} />
+            <SkipNextIcon className="icon" />
           </IconButton>
 
           <IconButton>
-            <RepeatIcon className="icon" />
+            <RepeatIcon style={{ fontSize: 20 }} className="icon" />
           </IconButton>
         </div>
         <div className="second">
-          <div>{currentTime}</div>
+          <div style={{ fontSize: 14 }}>{currentTime}</div>
           <Slider
             value={seek}
             onChange={handleSeek}
             style={{ marginTop: "-6px !important" }}
             aria-label="Seek"
           />
-          <div>{duration}</div>
+          <div style={{ fontSize: 14 }}>{duration}</div>
         </div>
       </div>
       <div className="volume">

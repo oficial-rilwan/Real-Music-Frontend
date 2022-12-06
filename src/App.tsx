@@ -24,6 +24,9 @@ import Admin from "./pages/admin";
 import AdminTrack from "./pages/admin/track/index";
 import AdminArtiste from "./pages/admin/artiste";
 import AdminAlbum from "./pages/admin/album";
+import Overview from "./pages/account";
+import EditProfile from "./pages/account/edit";
+import ChangePassword from "./pages/account/change_password";
 
 const theme = createTheme({
   palette: {
@@ -110,6 +113,18 @@ function App() {
     {
       path: "/account/signup",
       element: <SignUp />,
+    },
+    {
+      path: "/account/overview",
+      element: <Overview />,
+    },
+    {
+      path: "/account/edit",
+      element: <EditProfile />,
+    },
+    {
+      path: "/account/change-password",
+      element: <ChangePassword />,
     },
     {
       path: "/album/:id",

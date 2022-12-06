@@ -93,24 +93,25 @@ const Search = () => {
                     >
                       Top result
                     </h4>
-                    <Link to="/liked-songs">
-                      <div style={{ height: "calc(100% - 45px)" }}>
-                        <div className={styles.item}>
-                          <div className={styles.content}>
-                            <div>
-                              <img
-                                className={styles.artisteAvatar}
-                                src={tracks[0]?.poster}
-                                alt={tracks[0]?.artiste?.name}
-                              />
+                    <div style={{ height: "calc(100% - 45px)" }}>
+                      <div
+                        style={{ backgroundImage: `url(${tracks[0]?.poster})` }}
+                        className={styles.item}
+                      >
+                        <div className={styles.content}>
+                          <div>
+                            <img
+                              className={styles.artisteAvatar}
+                              src={tracks[0]?.poster}
+                              alt={tracks[0]?.artiste?.name}
+                            />
 
-                              <h2>{tracks[0]?.artiste?.name}</h2>
-                              <p>{tracks[0]?.name}</p>
-                            </div>
+                            <h2>{tracks[0]?.artiste?.name}</h2>
+                            <p>{tracks[0]?.name}</p>
                           </div>
                         </div>
                       </div>
-                    </Link>
+                    </div>
                   </div>
                   <div>
                     <h4

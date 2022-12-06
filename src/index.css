@@ -194,7 +194,7 @@ button {
   font-size: 13px;
 }
 .nav-bar {
-  height: 6rem;
+  height: 4rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -206,13 +206,11 @@ button {
   -webkit-transition: 0.3s ease-in;
   -o-transition: 0.3s ease-in;
   transition: 0.3s ease-in;
-}
-.nav-scroll {
+  border-bottom: 1px solid #ccc;
   position: sticky;
-  top: 0;
-  background-color: #f6f6f6;
-  z-index: 2;
+  top: 100px;
 }
+
 .nav-bar .navigation {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -233,7 +231,7 @@ button {
 .nav-bar .search-bar {
   background: #f3f3f6;
   border-radius: 40px;
-  height: 50px;
+  height: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -466,6 +464,10 @@ button {
   font-weight: bold !important;
   font-size: 14px;
 }
+.trending .items .box .content p a {
+  font-weight: bold !important;
+  font-size: 14px;
+}
 .trending .items .box .content p a:hover {
   text-decoration: underline;
 }
@@ -494,13 +496,18 @@ button {
   align-items: center;
   width: 100%;
   margin-bottom: 1rem;
-  border: 1px solid #ccc;
+  background-color: #f6f6f6;
+  transition: all 0.3s;
   padding: 16px;
   border-radius: 20px;
+  cursor: pointer;
+}
+.trending .artists .box:hover {
+  background-color: #f1f1f1;
 }
 .trending .artists .box .img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -526,7 +533,7 @@ button {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 6.5rem;
+  height: 6rem;
   z-index: 2;
   background: #f3f3f6;
   border-top: 1px solid #ccc;
@@ -555,7 +562,7 @@ button {
 }
 .player .track-details img {
   height: 4rem;
-  width: 5.5rem;
+  width: 4.5rem;
   -o-object-fit: cover;
   object-fit: cover;
   border-radius: 5px;
@@ -566,6 +573,7 @@ button {
   display: block;
   overflow: hidden;
   max-width: 200px;
+  margin-bottom: -5px;
   white-space: nowrap;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
@@ -584,7 +592,7 @@ button {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  gap: 10px !important;
+  gap: 8px !important;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -657,7 +665,7 @@ button {
 .screen-height-active {
   width: 100%;
   overflow-y: auto;
-  height: calc(100vh - 6.5rem);
+  height: calc(100% - 6rem);
 }
 .user-icon {
   font-size: 1.8rem !important;
@@ -697,8 +705,9 @@ button {
   }
   .trending .artists .box {
     flex-direction: row;
-    padding: 0;
+    padding: 12px;
     border: none;
+    border-radius: 10px;
   }
   .trending .artists .box .img {
     width: 50px;

@@ -1,17 +1,9 @@
 .banner {
+  margin: 0 auto;
   display: flex;
-  gap: 16px;
+  flex-direction: column;
   align-items: center;
-  padding: 16px;
-  margin-top: -200px;
-  padding-top: 300px;
-  background: rgb(135, 129, 236);
-  background: linear-gradient(
-    90deg,
-    rgba(135, 129, 236, 1) 0%,
-    rgba(13, 148, 231, 1) 35%,
-    rgba(1, 18, 102, 1) 100%
-  );
+  margin-bottom: 1.5rem;
 }
 .banner img {
   width: 200px;
@@ -19,22 +11,53 @@
   object-fit: cover;
   border-radius: 5px;
 }
+.text {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .banner p {
-  font-weight: 600;
-  color: #fff;
+  font-weight: bold !important;
+  text-align: center;
 }
 .banner h2 {
-  font-size: 5rem;
-  color: #fff;
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: bold !important;
 }
 .banner button {
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid #333;
   border-radius: 5px;
-  padding: 6px 16px;
+  padding: 4px 16px;
   font-weight: 600;
-  font-size: 14px;
-  transition: all 0.5s;
+  font-size: 13px;
+}
+.banner button:focus {
+  outline: 2px solid #ffffff94;
+}
+@media (min-width: 768px) {
+  .banner {
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: 1.5rem;
+  }
+  .banner p {
+    display: block;
+  }
+  .banner h2 {
+    font-size: 5rem;
+    text-align: left;
+  }
+  .text {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 .trackHeader {
   display: flex;
@@ -52,69 +75,4 @@
   margin-right: 10px;
   font-size: 14px;
   font-weight: 600;
-}
-.content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 16px;
-  transition: all 0.5s;
-  border-radius: 5px;
-}
-.content:hover {
-  background: #f1f1f1;
-  cursor: default;
-}
-.content img {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 5px;
-  object-fit: cover;
-}
-.content .title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.content .title span {
-  font-size: 14px;
-}
-.heading {
-  display: flex;
-  flex-direction: column;
-}
-.heading span {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-}
-.heading span:last-child {
-  font-weight: 400;
-  font-size: 13px;
-  color: #666;
-}
-.trow .playPause {
-  display: none;
-}
-.index {
-  display: flex;
-  justify-content: center;
-  width: 39px;
-}
-.trow:hover .index {
-  display: none;
-}
-.trow:hover .playPause {
-  display: flex;
-}
-
-.tcell {
-  border-bottom: none;
-  padding: 8px 16px;
-}
-.actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
 }

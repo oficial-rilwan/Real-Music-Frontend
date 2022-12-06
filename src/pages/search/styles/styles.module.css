@@ -14,64 +14,24 @@
   align-items: flex-end;
   border-radius: 10px;
   padding: 2rem;
-  background: #f6f6f6;
+  background-size: contain;
+  background-position: center;
 }
 
 .content h2 {
   font-size: 2rem;
   font-weight: 700;
   margin-top: 1rem;
+  color: #fff;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+.content p {
+  color: #fff;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
 }
 .artisteAvatar {
   width: 100px !important;
   height: 100px !important;
   border-radius: 10px;
-}
-.heading {
-  display: flex;
-  flex-direction: column;
-}
-.heading span {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.heading span:last-child {
-  font-weight: 400;
-  color: #666;
-}
-.heading span:last-child a {
-  font-size: 14px;
-}
-.heading span:last-child:hover a {
-  text-decoration: underline;
-}
-.trow .playPause {
-  display: none;
-}
-.index {
-  display: flex;
-  justify-content: center;
-  width: 39px;
-}
-.trow:hover .index {
-  display: none;
-}
-.trow:hover .playPause {
-  display: flex;
-}
-
-.tcell {
-  border-bottom: none;
-  padding: 8px 16px;
-}
-.actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px;
+  border: 1px solid #333;
 }
