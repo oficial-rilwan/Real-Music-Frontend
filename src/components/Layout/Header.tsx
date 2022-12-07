@@ -24,6 +24,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import userService from "../../service/userService";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -48,81 +51,120 @@ const Header = () => {
     <header
       style={{ background: "#fff", zIndex: 10, position: "sticky", top: 0 }}
     >
-      <nav className="bottom-nav">
-        <Link to="/">
-          <span className={pathname === "/" ? "item active" : "item"}>
-            <HomeOutlinedIcon className="icon" />
-            <p>Home</p>
-          </span>
-        </Link>
-        {pathname.includes("/admin") ? (
-          <React.Fragment>
-            <Link to="/admin/track">
-              <span
-                className={
-                  pathname.includes("/admin/track") ? "item active" : "item"
-                }
-              >
-                <AudiotrackIcon className="icon" />
-                <p>Tracks</p>
-              </span>
-            </Link>
-            <Link to="/admin/artiste">
-              <span
-                className={
-                  pathname.includes("/admin/artiste") ? "item active" : "item"
-                }
-              >
-                <GroupIcon className="icon" />
-                <p>Artists</p>
-              </span>
-            </Link>
-            <Link to="/admin/album">
-              <span
-                className={
-                  pathname.includes("/admin/album") ? "item active" : "item"
-                }
-              >
-                <AlbumIcon className="icon" />
-                <p>Albums</p>
-              </span>
-            </Link>
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <Link to="/search">
-              <span
-                className={
-                  pathname.includes("/search") ? "item active" : "item"
-                }
-              >
-                <SearchIcon className="icon" />
-                <p>Search</p>
-              </span>
-            </Link>
-            <Link to="/library">
-              <span
-                className={
-                  pathname.includes("/library") ? "item active" : "item"
-                }
-              >
-                <LibraryMusicOutlinedIcon className="icon" />
-                <p>Your Library</p>
-              </span>
-            </Link>
-            <Link to="/playlist">
-              <span
-                className={
-                  pathname.includes("/playlist") ? "item active" : "item"
-                }
-              >
-                <QueueMusicOutlinedIcon className="icon" />
-                <p>Playlist</p>
-              </span>
-            </Link>
-          </React.Fragment>
-        )}
-      </nav>
+      {pathname.includes("account") ? (
+        <nav className="bottom-nav">
+          <Link to="/">
+            <span className={pathname === "/" ? "item active" : "item"}>
+              <HomeOutlinedIcon className="icon" />
+              <p>Home</p>
+            </span>
+          </Link>
+
+          <Link to="/account/overview">
+            <span
+              className={pathname.includes("overview") ? "item active" : "item"}
+            >
+              <AccountBoxOutlinedIcon className="icon" />
+              <p>Account overview</p>
+            </span>
+          </Link>
+          <Link to="/account/edit">
+            <span
+              className={pathname.includes("edit") ? "item active" : "item"}
+            >
+              <EditOutlinedIcon className="icon" />
+              <p>Edit profile</p>
+            </span>
+          </Link>
+          <Link to="/account/change-password">
+            <span
+              className={
+                pathname.includes("change-password") ? "item active" : "item"
+              }
+            >
+              <LockOutlinedIcon className="icon" />
+              <p>Change password</p>
+            </span>
+          </Link>
+        </nav>
+      ) : (
+        <nav className="bottom-nav">
+          <Link to="/">
+            <span className={pathname === "/" ? "item active" : "item"}>
+              <HomeOutlinedIcon className="icon" />
+              <p>Home</p>
+            </span>
+          </Link>
+          {pathname.includes("/admin") ? (
+            <React.Fragment>
+              <Link to="/admin/track">
+                <span
+                  className={
+                    pathname.includes("/admin/track") ? "item active" : "item"
+                  }
+                >
+                  <AudiotrackIcon className="icon" />
+                  <p>Tracks</p>
+                </span>
+              </Link>
+              <Link to="/admin/artiste">
+                <span
+                  className={
+                    pathname.includes("/admin/artiste") ? "item active" : "item"
+                  }
+                >
+                  <GroupIcon className="icon" />
+                  <p>Artists</p>
+                </span>
+              </Link>
+              <Link to="/admin/album">
+                <span
+                  className={
+                    pathname.includes("/admin/album") ? "item active" : "item"
+                  }
+                >
+                  <AlbumIcon className="icon" />
+                  <p>Albums</p>
+                </span>
+              </Link>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <Link to="/search">
+                <span
+                  className={
+                    pathname.includes("/search") ? "item active" : "item"
+                  }
+                >
+                  <SearchIcon className="icon" />
+                  <p>Search</p>
+                </span>
+              </Link>
+              <Link to="/library">
+                <span
+                  className={
+                    pathname.includes("/library") ? "item active" : "item"
+                  }
+                >
+                  <LibraryMusicOutlinedIcon className="icon" />
+                  <p>Your Library</p>
+                </span>
+              </Link>
+              <Link to="/playlist">
+                <span
+                  className={
+                    pathname.includes("/playlist") ? "item active" : "item"
+                  }
+                >
+                  <QueueMusicOutlinedIcon className="icon" />
+                  <p>Playlist</p>
+                </span>
+              </Link>
+            </React.Fragment>
+          )}
+        </nav>
+      )}
+
       <nav className={"nav-bar"}>
         <div className="navigation">
           <KeyboardArrowLeftIcon className="icon" />
