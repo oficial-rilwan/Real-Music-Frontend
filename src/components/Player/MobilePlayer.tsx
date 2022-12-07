@@ -14,13 +14,9 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { IconButton, Slider } from "@mui/material";
 import { AuthContext } from "../../context/AuthContext";
 import userService from "../../service/userService";
+import { useNavigate } from "react-router-dom";
 
-interface MobilePlayerProps {
-  open: boolean;
-  handlePlayer: () => void;
-}
-
-const MobilePlayer = ({ open, handlePlayer }: MobilePlayerProps) => {
+const MobilePlayer = () => {
   const {
     next,
     prev,
@@ -33,6 +29,7 @@ const MobilePlayer = ({ open, handlePlayer }: MobilePlayerProps) => {
     currentTrack,
   } = useContext(PlayerContext);
   const { user, refreshDetails } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   async function likeSong() {
     if (!user) return window.location.assign("/auth/signin");
@@ -50,11 +47,9 @@ const MobilePlayer = ({ open, handlePlayer }: MobilePlayerProps) => {
     } catch (ex) {}
   }
   return (
-    <div
-      className={open ? `${styles.player} ${styles.showPlayer}` : styles.player}
-    >
+    <div className={styles.player}>
       <div className={styles.header}>
-        <button onClick={handlePlayer} className={styles.returnIcon}>
+        <button onClick={() => navigate(-1)} className={styles.returnIcon}>
           <KeyboardArrowLeftIcon className="icon" />
         </button>
         <p>Now Playing</p>

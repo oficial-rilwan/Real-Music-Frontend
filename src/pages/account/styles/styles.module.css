@@ -9,11 +9,7 @@
   min-height: 100%;
   border-right: 1px solid #ccc;
 }
-@media (max-width: 768px) {
-  .sidebar {
-    display: none;
-  }
-}
+
 .sidebar ul {
   list-style: none;
   padding: 0;
@@ -53,6 +49,14 @@
 }
 .section {
   padding: 16px 32px;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .section {
+    padding: 16px 12px;
+  }
 }
 .section_title {
   font-size: 2rem;
@@ -146,4 +150,12 @@
   border-radius: 40px;
   font-weight: bold;
   background-color: #f26419;
+}
+
+.validationMessage {
+  color: #ff0000;
+}
+.user_info_edit li .inputValidation {
+  border: none;
+  outline: 2px solid #ff0000;
 }

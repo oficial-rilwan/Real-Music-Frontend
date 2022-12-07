@@ -4,7 +4,7 @@ import SignIn from "./pages/auth/signin";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material";
 import { AuthContextProvider } from "./context/AuthContext";
-import { PlayerContextProvider } from "./context/PlayerContext";
+import { PlayerContext, PlayerContextProvider } from "./context/PlayerContext";
 import SignUp from "./pages/auth/signup";
 import Home from "./pages/home";
 import Albums from "./pages/album";
@@ -27,6 +27,8 @@ import AdminAlbum from "./pages/admin/album";
 import Overview from "./pages/account";
 import EditProfile from "./pages/account/edit";
 import ChangePassword from "./pages/account/change_password";
+import MobilePlayerPage from "./pages/mobile/player";
+import { useContext, useEffect } from "react";
 
 const theme = createTheme({
   palette: {
@@ -40,6 +42,8 @@ const theme = createTheme({
   },
 });
 function App() {
+  const { currentTrack, isPlaying, currentTrackIndex, playPause, prev, next } =
+    useContext(PlayerContext);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -48,6 +52,10 @@ function App() {
     {
       path: "/auth",
       element: <SignIn />,
+    },
+    {
+      path: "/mobile-player",
+      element: <MobilePlayerPage />,
     },
     {
       path: "/album",
@@ -139,6 +147,19 @@ function App() {
       element: <SinglePlaylist />,
     },
   ]);
+
+  useEffect(() => {
+    if (!currentTrack || !currentTrack?.url) return;
+    window.navigator.mediaSession.metadata = new MediaMetadata({
+      title: currentTrack?.name,
+      artist: currentTrack?.artiste?.name,
+      artwork: [{ src: currentTrack?.poster }],
+    });
+    window.navigator.mediaSession.setActionHandler("play", playPause);
+    window.navigator.mediaSession.setActionHandler("pause", playPause);
+    window.navigator.mediaSession.setActionHandler("seekbackward", prev);
+    window.navigator.mediaSession.setActionHandler("seekforward", next);
+  }, [currentTrack?.url, isPlaying, currentTrackIndex]);
   return (
     <ThemeProvider theme={theme}>
       <AuthContextProvider>

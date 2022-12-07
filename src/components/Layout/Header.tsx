@@ -53,13 +53,6 @@ const Header = () => {
     >
       {pathname.includes("account") ? (
         <nav className="bottom-nav">
-          <Link to="/">
-            <span className={pathname === "/" ? "item active" : "item"}>
-              <HomeOutlinedIcon className="icon" />
-              <p>Home</p>
-            </span>
-          </Link>
-
           <Link to="/account/overview">
             <span
               className={pathname.includes("overview") ? "item active" : "item"}
@@ -182,7 +175,7 @@ const Header = () => {
             <img src="/assets/search-icon.png" alt="" />
           </button>
         </form>
-        {user && (
+        {token && (
           <div tabIndex={0} onClick={handleClick} className="user">
             {user?.profileImage ? (
               <Avatar
@@ -197,7 +190,7 @@ const Header = () => {
             <ArrowDropDownIcon className="icon arrow" />
           </div>
         )}
-        {!user && (
+        {!token && (
           <div className="user">
             <Link style={{ fontWeight: "bold" }} to="/auth">
               Sign in
@@ -243,9 +236,15 @@ const Header = () => {
           {user && (
             <MenuItem>
               <Link to="/account/overview">
-                <span style={{ display: "flex", alignItems: "center" }}>
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    fontWeight: "bold",
+                  }}
+                >
                   <ListItemIcon>
-                    <LaunchIcon fontSize="small" />
+                    <LaunchIcon style={{ color: "#333" }} fontSize="small" />
                   </ListItemIcon>
                   My account
                 </span>
@@ -253,9 +252,9 @@ const Header = () => {
             </MenuItem>
           )}
           {user && (
-            <MenuItem>
+            <MenuItem style={{ fontWeight: "bold" }}>
               <ListItemIcon>
-                <Settings fontSize="small" />
+                <Settings style={{ color: "#333" }} fontSize="small" />
               </ListItemIcon>
               Settings
             </MenuItem>
@@ -264,9 +263,18 @@ const Header = () => {
           {user?.isAdmin && (
             <MenuItem>
               <Link to="/admin">
-                <span style={{ display: "flex", alignItems: "center" }}>
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    fontWeight: "bold",
+                  }}
+                >
                   <ListItemIcon>
-                    <AdminPanelSettingsIcon fontSize="small" />
+                    <AdminPanelSettingsIcon
+                      style={{ color: "#333" }}
+                      fontSize="small"
+                    />
                   </ListItemIcon>
                   Admin Dashboard
                 </span>
@@ -274,9 +282,9 @@ const Header = () => {
             </MenuItem>
           )}
           {user && (
-            <MenuItem onClick={logoutUser}>
+            <MenuItem onClick={logoutUser} style={{ fontWeight: "bold" }}>
               <ListItemIcon>
-                <Logout fontSize="small" />
+                <Logout style={{ color: "#333" }} fontSize="small" />
               </ListItemIcon>
               Logout
             </MenuItem>

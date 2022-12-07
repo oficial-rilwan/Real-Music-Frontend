@@ -17,9 +17,10 @@ import { PlayerContext } from "../../context/PlayerContext";
 import userService from "../../service/userService";
 import { AuthContext } from "../../context/AuthContext";
 import MobilePlayer from "./MobilePlayer";
+import { useNavigate } from "react-router-dom";
 
 const Player = () => {
-  const [mobilePlayer, setMobilePlayer] = useState(false);
+  const navigate = useNavigate();
   const { user, refreshDetails } = useContext(AuthContext);
   const {
     next,
@@ -52,8 +53,7 @@ const Player = () => {
   }
 
   function handleMobilePlayer() {
-    if (mobilePlayer) setMobilePlayer(false);
-    else setMobilePlayer(true);
+    navigate("/mobile-player");
   }
 
   return (
@@ -142,7 +142,6 @@ const Player = () => {
           value={seek}
         />
       </div>
-      <MobilePlayer open={mobilePlayer} handlePlayer={handleMobilePlayer} />
     </div>
   );
 };

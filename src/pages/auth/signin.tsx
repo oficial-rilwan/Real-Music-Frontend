@@ -110,7 +110,7 @@ const SignIn = () => {
                 label="Remember me"
               />
 
-              <Link to="/auth/forgot-password">Forgot Password</Link>
+              <Link to="/account/forgot-password">Forgot Password</Link>
             </div>
             <div className={styles.submitActions}>
               <button type="submit" className={styles.default}>
@@ -141,7 +141,8 @@ const SignIn = () => {
             </div>
           </form>
           <p className={styles.accountCheck}>
-            Don&apos;t have an account? <Link to="/auth/signup">Sign up</Link>
+            Don&apos;t have an account?{" "}
+            <Link to="/account/signup">Sign up</Link>
           </p>
         </div>
       </div>

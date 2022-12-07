@@ -179,7 +179,7 @@ const SignUp = () => {
             </div>
           </form>
           <p className={styles.accountCheck}>
-            Have an account? <Link to="/auth/signin">Sign in</Link>
+            Have an account? <Link to="/auth">Sign in</Link>
           </p>
         </div>
       </div>
