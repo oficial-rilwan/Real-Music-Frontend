@@ -9,5 +9,6 @@ export default interface Track {
   album?: Album;
   url: string;
   likes: string[];
+  duration: string;
   likeCount: number;
 }

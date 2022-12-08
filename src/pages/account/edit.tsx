@@ -1,32 +1,29 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { userSchema } from "../../utils/validations";
 import AccountLayout from "./components/Layout";
 import styles from "./styles/styles.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import countries from "../../static/countries";
+import Country from "../../interface/Country";
+import userService from "../../service/userService";
+import MessageFeedback from "../../components/Feedback/MessageFeedback";
 
 interface CreateUserDto {
   name: string;
   email: string;
   gender: string;
-
   dateOfBirth: Date | null;
   country: string;
 }
 
 const EditProfile = () => {
-  const { user } = useContext(AuthContext);
-  const [values, setValues] = useState<CreateUserDto>({
-    name: "",
-    email: "",
-    gender: "",
-
-    dateOfBirth: null,
-    country: "",
-  });
-
+  const navigate = useNavigate();
+  const { user, refreshDetails } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const {
     reset,
     register,
@@ -43,8 +40,17 @@ const EditProfile = () => {
     },
   });
 
-  function onSubmit(data: any) {
-    console.log(data);
+  async function onSubmit(data: any) {
+    try {
+      setLoading(true);
+      await userService.updateUser(data);
+      refreshDetails();
+      navigate("/account/overview");
+      setLoading(false);
+    } catch (ex: any) {
+      setError(ex.response.data);
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -62,6 +68,7 @@ const EditProfile = () => {
       <div className={styles.section}>
         <h3 className={styles.section_title}>Edit profile</h3>
         <form onSubmit={handleSubmit(onSubmit)}>
+          {error && <MessageFeedback message={error} severity="error" />}
           <ul className={styles.user_info_edit}>
             <li>
               <label>Username</label>
@@ -117,25 +124,18 @@ const EditProfile = () => {
                 </span>
               )}
             </li>
-            {/* <li>
-              <label>Date of birth</label>
-              <div className={styles.date_group}>
-                <input type="text" value={values?.email} />
-                <select>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-                <input type="text" value={values?.email} />
-              </div>
-            </li> */}
+
             <li>
               <label>Country of region</label>
               <select
                 {...register("country")}
                 className={errors?.country ? styles.inputValidation : ""}
               >
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                {countries.map((item: Country) => (
+                  <option key={item?.name} value={item?.name}>
+                    {item?.name}
+                  </option>
+                ))}
               </select>
               {errors?.country && (
                 <span className={styles.validationMessage}>
@@ -148,7 +148,9 @@ const EditProfile = () => {
             <button type="button">
               <Link to="/account/overview">Cancel</Link>
             </button>
-            <button type="submit">Save profile</button>
+            <button type="submit">
+              {loading ? "Saving..." : "Save profile"}
+            </button>
           </div>
         </form>
       </div>

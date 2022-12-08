@@ -224,7 +224,8 @@ button {
   font-size: 2rem;
   font-weight: 300;
   color: #666;
-  cursor: not-allowed;
+  /* cursor: not-allowed; */
+  cursor: pointer;
   background-color: #f6f6f6;
   border-radius: 50%;
 }

@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import useNetworkStatus from "../hooks/useNetworkStatus";
 import User from "../interface/User";
 import userService from "../service/userService";
 
@@ -21,6 +22,7 @@ export const AuthContext = createContext({} as AuthToken);
 const token: string | null = userService.getToken();
 
 export const AuthContextProvider = ({ children }: AuthContextProp) => {
+  const { isConnected } = useNetworkStatus();
   const [refresh, setRefresh] = useState(false);
   const [loadingUserDetails, setLoadingUserDetails] = useState(false);
   const [user, setUser] = useState<User | null>(null);
@@ -28,7 +30,7 @@ export const AuthContextProvider = ({ children }: AuthContextProp) => {
   useEffect(() => {
     if (!token) return;
     getUserDetails();
-  }, [token, refresh]);
+  }, [token, refresh, isConnected]);
 
   function saveToken(token: string) {
     ls?.setItem("x-auth-token", token);

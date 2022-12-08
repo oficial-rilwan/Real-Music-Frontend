@@ -41,7 +41,7 @@ const ArtistList = ({ styles, refresh }: ArtistListProps) => {
       setArtists(data?.data);
     } catch (ex) {}
   }
-  console.log(artists);
+
   return (
     <React.Fragment>
       <h4

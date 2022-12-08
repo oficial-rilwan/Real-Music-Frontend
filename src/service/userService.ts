@@ -10,6 +10,13 @@ class UserService {
   getUser() {
     return httpService.get("/user");
   }
+  updateUser(data: any) {
+    return httpService.put("/user", data);
+  }
+  changePassword(data: any) {
+    const { confirmNewPassword, ...rest } = data;
+    return httpService.put("/user/change-password", rest);
+  }
   followArtiste(artisteId: any) {
     return httpService.put("/user/follow", { artisteId });
   }

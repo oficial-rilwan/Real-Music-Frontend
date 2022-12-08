@@ -42,8 +42,6 @@ const theme = createTheme({
   },
 });
 function App() {
-  const { currentTrack, isPlaying, currentTrackIndex, playPause, prev, next } =
-    useContext(PlayerContext);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -148,18 +146,6 @@ function App() {
     },
   ]);
 
-  useEffect(() => {
-    if (!currentTrack || !currentTrack?.url) return;
-    window.navigator.mediaSession.metadata = new MediaMetadata({
-      title: currentTrack?.name,
-      artist: currentTrack?.artiste?.name,
-      artwork: [{ src: currentTrack?.poster }],
-    });
-    window.navigator.mediaSession.setActionHandler("play", playPause);
-    window.navigator.mediaSession.setActionHandler("pause", playPause);
-    window.navigator.mediaSession.setActionHandler("seekbackward", prev);
-    window.navigator.mediaSession.setActionHandler("seekforward", next);
-  }, [currentTrack?.url, isPlaying, currentTrackIndex]);
   return (
     <ThemeProvider theme={theme}>
       <AuthContextProvider>

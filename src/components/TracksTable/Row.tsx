@@ -33,7 +33,6 @@ const Row = ({
   const { isPlaying, currentTrack, ChangePlaylistAndTrack, pauseCurrentTrack } =
     useContext(PlayerContext);
   const { user, refreshDetails } = useContext(AuthContext);
-  const { duration } = useTrackDuration(item?.url);
 
   async function likeSong() {
     if (!user) return window.location.assign("/auth/signin");
@@ -126,18 +125,18 @@ const Row = ({
             </IconButton>
           </Tooltip>
         )}
-        <span className={`${styles.hide}`}>{duration}</span>
-        {user && (
-          <IconButton
-            onClick={(e) => {
-              handleClick(e);
-              handleTrackSelect(item);
-            }}
-            className={styles.icon}
-          >
-            <MoreHorizIcon />
-          </IconButton>
-        )}
+        <span className={`${styles.hide}`}>{item?.duration}</span>
+
+        <IconButton
+          disabled={!user}
+          onClick={(e) => {
+            handleClick(e);
+            handleTrackSelect(item);
+          }}
+          className={styles.icon}
+        >
+          <MoreHorizIcon />
+        </IconButton>
       </div>
     </div>
   );

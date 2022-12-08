@@ -27,11 +27,11 @@ const AddArtiste = ({ styles, setRefresh }: CreateTrackProps) => {
     name: "",
     image: null,
   });
-  console.log(imageUrl);
-  //   useEffect(() => {
-  //     if (!imageUrl) return;
-  //     save();
-  //   }, [imageUrl]);
+
+  useEffect(() => {
+    if (!imageUrl) return;
+    save();
+  }, [imageUrl]);
 
   function uploadFiles(e: React.FormEvent) {
     e.preventDefault();
@@ -43,17 +43,17 @@ const AddArtiste = ({ styles, setRefresh }: CreateTrackProps) => {
     }
   }
 
-  //   async function save() {
-  //     const { name } = values;
-  //     try {
-  //       await artisteService.create({ name, image: imageUrl });
-  //       setLoading(false);
-  //       clearField(setValues);
-  //       setRefresh((prev: any) => !prev);
-  //     } catch (ex) {
-  //       setLoading(false);
-  //     }
-  //   }
+  async function save() {
+    const { name } = values;
+    try {
+      await artisteService.create({ name, image: imageUrl });
+      setLoading(false);
+      clearField(setValues);
+      setRefresh((prev: any) => !prev);
+    } catch (ex) {
+      setLoading(false);
+    }
+  }
 
   function handleInputChange(e: any) {
     const { name, value } = e.target;

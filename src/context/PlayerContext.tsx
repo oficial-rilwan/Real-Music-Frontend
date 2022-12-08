@@ -109,6 +109,19 @@ export const PlayerContextProvider = ({
     ls?.setItem("player-state", JSON.stringify(data));
   }, [volume, currentTrackIndex, playlist]);
 
+  useEffect(() => {
+    if (!currentTrack || !currentTrack?.url) return;
+    window.navigator.mediaSession.metadata = new MediaMetadata({
+      title: currentTrack?.name,
+      artist: currentTrack?.artiste?.name,
+      artwork: [{ src: currentTrack?.poster }],
+    });
+    window.navigator.mediaSession.setActionHandler("play", playPause);
+    window.navigator.mediaSession.setActionHandler("pause", playPause);
+    window.navigator.mediaSession.setActionHandler("seekbackward", prev);
+    window.navigator.mediaSession.setActionHandler("seekforward", next);
+  }, [currentTrack?.url, isPlaying, currentTrackIndex]);
+
   async function addToRecentlyPlayed(trackId: string) {
     try {
       await userService.addToRecentlyPlayed(trackId);

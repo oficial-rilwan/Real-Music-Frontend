@@ -127,7 +127,7 @@ const RowSM = ({
             </IconButton>
           </Tooltip>
         )}
-        <span className={`${styles.hide}`}>{duration}</span>
+        <span className={`${styles.hide}`}>{item?.duration}</span>
         {user && (
           <IconButton
             onClick={(e) => {

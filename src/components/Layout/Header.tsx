@@ -47,6 +47,7 @@ const Header = () => {
     e.preventDefault();
     navigate("/search?keyword=" + query);
   }
+
   return (
     <header
       style={{ background: "#fff", zIndex: 10, position: "sticky", top: 0 }}
@@ -160,8 +161,14 @@ const Header = () => {
 
       <nav className={"nav-bar"}>
         <div className="navigation">
-          <KeyboardArrowLeftIcon className="icon" />
-          <KeyboardArrowRightIcon className="icon" />
+          <KeyboardArrowLeftIcon
+            onClick={() => navigate(-1)}
+            className="icon"
+          />
+          <KeyboardArrowRightIcon
+            onClick={() => navigate(+1)}
+            className="icon"
+          />
         </div>
         <form onSubmit={handleSearch} tabIndex={0} className="search-bar">
           <input
@@ -240,7 +247,7 @@ const Header = () => {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    fontWeight: "bold",
+                    fontWeight: 500,
                   }}
                 >
                   <ListItemIcon>
@@ -252,7 +259,7 @@ const Header = () => {
             </MenuItem>
           )}
           {user && (
-            <MenuItem style={{ fontWeight: "bold" }}>
+            <MenuItem style={{ fontWeight: 500 }}>
               <ListItemIcon>
                 <Settings style={{ color: "#333" }} fontSize="small" />
               </ListItemIcon>
@@ -267,7 +274,7 @@ const Header = () => {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    fontWeight: "bold",
+                    fontWeight: 500,
                   }}
                 >
                   <ListItemIcon>
@@ -282,7 +289,7 @@ const Header = () => {
             </MenuItem>
           )}
           {user && (
-            <MenuItem onClick={logoutUser} style={{ fontWeight: "bold" }}>
+            <MenuItem onClick={logoutUser} style={{ fontWeight: 500 }}>
               <ListItemIcon>
                 <Logout style={{ color: "#333" }} fontSize="small" />
               </ListItemIcon>
