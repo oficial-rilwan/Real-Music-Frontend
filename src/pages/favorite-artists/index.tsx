@@ -9,6 +9,7 @@ import {
   MultipleArtisteLoaders,
 } from "../../components/Loaders/Loaders";
 import userService from "../../service/userService";
+import NoDataFeedback from "../../components/Feedback/NoDataFeedback";
 
 const FavoriteArtists = () => {
   const [loading, setLoading] = useState(false);
@@ -33,6 +34,7 @@ const FavoriteArtists = () => {
       <SiteLayout>
         <main style={{ padding: "16px", marginBottom: "6rem" }}>
           {loading && <MultipleArtisteLoaders />}
+          {!loading && artists?.length === 0 && <NoDataFeedback />}
           {artists.length > 0 && (
             <section className="trending">
               <div className="sec-title">

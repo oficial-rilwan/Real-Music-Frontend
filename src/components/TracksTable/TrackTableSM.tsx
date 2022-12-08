@@ -43,6 +43,7 @@ const TrackTableSM = ({ tracks }: TrackListProps) => {
       </div>
       <ActionMenu
         item={selectedTrack}
+        tracks={tracks}
         anchorEl={anchorEl}
         handleClose={handleClose}
       />

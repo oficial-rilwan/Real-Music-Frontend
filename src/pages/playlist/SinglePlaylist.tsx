@@ -10,12 +10,12 @@ import playlistService from "../../service/playlistService";
 
 import { AuthContext } from "../../context/AuthContext";
 import { useParams } from "react-router";
+import NoDataFeedback from "../../components/Feedback/NoDataFeedback";
 
 const SinglePlaylist = () => {
   const { id } = useParams();
-
   const [playlist, setPlaylist] = useState<Playlist | null>(null);
-  const { isPlaying, currentTrack } = useContext(PlayerContext);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!id) return;
@@ -24,9 +24,13 @@ const SinglePlaylist = () => {
 
   async function getPlaylist() {
     try {
+      setLoading(true);
       const { data } = await playlistService.getOnePlaylist(id);
       setPlaylist(data);
-    } catch (ex) {}
+      setLoading(false);
+    } catch (ex) {
+      setLoading(false);
+    }
   }
   return (
     <div>
@@ -40,7 +44,7 @@ const SinglePlaylist = () => {
                 <small>This includes songs in {playlist?.name}</small>
               </div>
             </div>
-
+            {!loading && playlist?.tracks?.length === 0 && <NoDataFeedback />}
             <div>
               <TrackTable tracks={playlist?.tracks} />
             </div>

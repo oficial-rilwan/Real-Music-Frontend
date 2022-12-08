@@ -89,23 +89,6 @@ const Row = ({
       </div>
       <div className={styles.album}>{item?.album?.name}</div>
       <div className={styles.actions}>
-        {/* {isPlaying && currentTrack?._id === item?._id ? (
-          <IconButton
-            className={styles.scIcon}
-            size="small"
-            onClick={pauseCurrentTrack}
-          >
-            <PauseIcon />
-          </IconButton>
-        ) : (
-          <IconButton
-            className={styles.scIcon}
-            size="small"
-            onClick={() => ChangePlaylistAndTrack(tracks, index)}
-          >
-            <PlayArrowIcon />
-          </IconButton>
-        )} */}
         {item?._id && user?.likes?.includes(item?._id) ? (
           <Tooltip title="Remove from favorites">
             <IconButton

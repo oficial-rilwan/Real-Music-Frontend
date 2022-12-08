@@ -1,0 +1,27 @@
+.connection {
+  position: sticky;
+  top: 4rem;
+  z-index: 10;
+  padding: 6px 16px;
+  background: red;
+  color: #fff;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.connection div {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.connection button {
+  font-weight: bold;
+  padding: 6px 16px;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 3.5px;
+}
+.connection * {
+  color: #fff;
+}

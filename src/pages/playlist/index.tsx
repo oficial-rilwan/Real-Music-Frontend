@@ -9,6 +9,7 @@ import { MultipleTrackLoaders } from "../../components/Loaders/Loaders";
 import Playlist from "../../interface/Playlist";
 import playlistService from "../../service/playlistService";
 import { AuthContext } from "../../context/AuthContext";
+import NoDataFeedback from "../../components/Feedback/NoDataFeedback";
 
 const Playlists = () => {
   const [loading, setLoading] = useState(false);
@@ -43,6 +44,7 @@ const Playlists = () => {
             </button>
           </div>
           {loading && <MultipleTrackLoaders />}
+          {!loading && playlists?.length === 0 && <NoDataFeedback />}
           <div className={styles.listGrid}>
             {playlists?.map((item: Playlist, index) => (
               <PlaylistCard key={item._id} index={index} playlist={item} />

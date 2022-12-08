@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useNetworkStatus = () => {
-  const [isConnected, setIsConnected] = useState(false);
+  const [isConnected, setIsConnected] = useState(true);
 
   useEffect(() => {
     window.addEventListener("online", () => setIsConnected(true));

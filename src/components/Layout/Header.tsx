@@ -242,7 +242,7 @@ const Header = () => {
         >
           {user && (
             <MenuItem>
-              <Link to="/account/overview">
+              <a target="_blank" href="/account/overview">
                 <span
                   style={{
                     display: "flex",
@@ -255,7 +255,7 @@ const Header = () => {
                   </ListItemIcon>
                   My account
                 </span>
-              </Link>
+              </a>
             </MenuItem>
           )}
           {user && (

@@ -21,9 +21,10 @@ import PauseIcon from "@mui/icons-material/Pause";
 interface MenuProps {
   item: Track | null;
   anchorEl: any;
+  tracks: Track[] | undefined;
   handleClose: () => void;
 }
-const ActionMenu = ({ item, anchorEl, handleClose }: MenuProps) => {
+const ActionMenu = ({ item, tracks, anchorEl, handleClose }: MenuProps) => {
   const { user, refreshDetails } = useContext(AuthContext);
   const {
     handlePlaylistDialog,
@@ -76,6 +77,9 @@ const ActionMenu = ({ item, anchorEl, handleClose }: MenuProps) => {
     } catch (ex) {}
   }
 
+  const tracksId: string[] | undefined = tracks?.map((item) => item?._id);
+  const trackIndex = tracksId?.indexOf(item?._id || "") || 0;
+
   return (
     <Menu
       anchorEl={anchorEl}
@@ -87,7 +91,7 @@ const ActionMenu = ({ item, anchorEl, handleClose }: MenuProps) => {
     >
       <MenuItem
         onClick={() => {
-          item && ChangePlaylistAndTrack([item], 0);
+          item && ChangePlaylistAndTrack(tracks, trackIndex);
           handleClose();
         }}
         className="menuItem"
@@ -147,20 +151,6 @@ const ActionMenu = ({ item, anchorEl, handleClose }: MenuProps) => {
           </MenuItem>
         );
       })}
-
-      {/* <Divider /> */}
-      {/* <MenuItem className="menuItem">
-        <ListItemIcon>
-          <EditIcon className="icon" />
-        </ListItemIcon>
-        Edit
-      </MenuItem> */}
-      {/* <MenuItem style={{ color: "red" }} className="menuItem">
-        <ListItemIcon>
-          <DeleteForeverIcon style={{ color: "red" }} className="icon" />
-        </ListItemIcon>
-        Delete
-      </MenuItem> */}
     </Menu>
   );
 };

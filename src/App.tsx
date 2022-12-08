@@ -29,6 +29,7 @@ import EditProfile from "./pages/account/edit";
 import ChangePassword from "./pages/account/change_password";
 import MobilePlayerPage from "./pages/mobile/player";
 import { useContext, useEffect } from "react";
+import NotFound from "./pages/notFound";
 
 const theme = createTheme({
   palette: {
@@ -143,6 +144,10 @@ function App() {
     {
       path: "/playlist/:id",
       element: <SinglePlaylist />,
+    },
+    {
+      path: "*",
+      element: <NotFound />,
     },
   ]);
 

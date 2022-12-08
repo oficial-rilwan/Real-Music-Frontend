@@ -5,6 +5,8 @@ import Player from "../Player/Player";
 import { PlayerContext } from "../../context/PlayerContext";
 import { AuthContext } from "../../context/AuthContext";
 import CircularProgress from "@mui/material/CircularProgress";
+import ConnectionFeedback from "../Feedback/ConnectionFeedback";
+import useNetworkStatus from "../../hooks/useNetworkStatus";
 
 interface SiteChildrenProps {
   children: JSX.Element;
@@ -12,7 +14,8 @@ interface SiteChildrenProps {
 
 const SiteLayout = ({ children }: SiteChildrenProps) => {
   const { currentTrack } = useContext(PlayerContext);
-  const { loadingUserDetails } = useContext(AuthContext);
+  const { isConnected } = useNetworkStatus();
+  console.log(isConnected);
   return (
     <React.Fragment>
       <div className="site-layout">
@@ -21,6 +24,7 @@ const SiteLayout = ({ children }: SiteChildrenProps) => {
           className={currentTrack ? "screen-height-active" : "screen-height"}
         >
           <Header />
+          {!isConnected && <ConnectionFeedback />}
           {children}
         </div>
         {currentTrack && <Player />}

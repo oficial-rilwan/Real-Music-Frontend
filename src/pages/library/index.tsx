@@ -17,6 +17,7 @@ import { MultipleTrackLoaders } from "../../components/Loaders/Loaders";
 
 const Library = () => {
   const [recentlyPlayed, setRecentlyPlayed] = useState<Track[]>([]);
+  const [loading, setLoading] = useState(false);
   const { currentTrack, isPlaying, ChangePlaylistAndTrack } =
     useContext(PlayerContext);
 
@@ -25,35 +26,19 @@ const Library = () => {
   }, []);
 
   async function getRecentlyPlayed() {
-    const { data } = await userService.getRecentlyPlayed();
-    setRecentlyPlayed(data);
+    try {
+      setLoading(true);
+      const { data } = await userService.getRecentlyPlayed();
+      setRecentlyPlayed(data);
+      setLoading(false);
+    } catch (ex) {
+      setLoading(false);
+    }
   }
   return (
     <div>
       <SiteLayout>
         <main style={{ padding: "16px", marginBottom: "8rem" }}>
-          {recentlyPlayed.length === 0 && <MultipleTrackLoaders />}
-          {recentlyPlayed.length > 0 && (
-            <section className="trending">
-              <div className="sec-title">
-                <h4>Recents</h4>
-                <Link to="/recently-played">More</Link>
-              </div>
-              <div className="items">
-                {recentlyPlayed.map((item: Track, index) => (
-                  <TrackCard
-                    key={item?._id}
-                    item={item}
-                    index={index}
-                    tracks={recentlyPlayed}
-                    isPlaying={isPlaying}
-                    currentTrack={currentTrack}
-                    ChangePlaylistAndTrack={ChangePlaylistAndTrack}
-                  />
-                ))}
-              </div>
-            </section>
-          )}
           <div className={styles.options}>
             <Link to="/playlist">
               <a className={styles.item}>
@@ -84,6 +69,28 @@ const Library = () => {
               </a>
             </Link>
           </div>
+          {loading && <MultipleTrackLoaders />}
+          {recentlyPlayed.length > 0 && (
+            <section className="trending">
+              <div className="sec-title">
+                <h4>Recents</h4>
+                <Link to="/recently-played">More</Link>
+              </div>
+              <div className="items">
+                {recentlyPlayed.map((item: Track, index) => (
+                  <TrackCard
+                    key={item?._id}
+                    item={item}
+                    index={index}
+                    tracks={recentlyPlayed}
+                    isPlaying={isPlaying}
+                    currentTrack={currentTrack}
+                    ChangePlaylistAndTrack={ChangePlaylistAndTrack}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
         </main>
       </SiteLayout>
     </div>

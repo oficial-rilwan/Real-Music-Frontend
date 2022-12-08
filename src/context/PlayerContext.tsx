@@ -27,7 +27,7 @@ interface PlayerContext {
   setCurrentTrack: any;
   handleVolume: (_: any, value: any) => void;
   handleSeek: (_: any, value: any) => void;
-  ChangePlaylistAndTrack: (data: Track[], index: number) => void;
+  ChangePlaylistAndTrack: (data: Track[] | undefined, index: number) => void;
   switchTrack: () => void;
   pauseCurrentTrack: () => void;
   seekTimeUpdate: () => void;
@@ -221,18 +221,18 @@ export const PlayerContextProvider = ({
     let nt = audio.current.currentTime * (100 / audio.current.duration);
     setSeek(nt);
   }
-  function ChangePlaylistAndTrack(data: Track[], index: number) {
+  function ChangePlaylistAndTrack(data: Track[] | undefined, index: number) {
     if (!user) return window.location.assign("/auth");
-    if (!isPlaying && currentTrack?._id === data[index]?._id) {
+    if (data && !isPlaying && currentTrack?._id === data[index]?._id) {
       setIsPlaying(true);
       audio.current
         .play()
         .then((_: any) => console.log("playing"))
         .catch((error: any) => console.log(error));
-    } else if (isPlaying && currentTrack?._id === data[index]?._id) {
+    } else if (data && isPlaying && currentTrack?._id === data[index]?._id) {
       setIsPlaying(false);
       audio.current.pause();
-    } else if (currentTrack?._id !== data[index]?._id) {
+    } else if (data && currentTrack?._id !== data[index]?._id) {
       setIsPlaying(true);
       setPlaylist(data);
       setCurrentTrack(data[index]);

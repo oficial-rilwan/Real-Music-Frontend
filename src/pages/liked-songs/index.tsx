@@ -6,10 +6,11 @@ import Track from "../../interface/Track";
 import userService from "../../service/userService";
 import { AuthContext } from "../../context/AuthContext";
 import styles from "./styles/styles.module.css";
+import NoDataFeedback from "../../components/Feedback/NoDataFeedback";
 
 const LikedSongs = () => {
   const [tracks, setTracks] = useState<Track[]>([]);
-  const { isPlaying, currentTrack } = useContext(PlayerContext);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getTracks();
@@ -17,9 +18,13 @@ const LikedSongs = () => {
 
   async function getTracks() {
     try {
+      setLoading(true);
       const { data } = await userService.getLikedSongs();
       setTracks(data);
-    } catch (ex) {}
+      setLoading(false);
+    } catch (ex) {
+      setLoading(false);
+    }
   }
   return (
     <div>
@@ -33,6 +38,7 @@ const LikedSongs = () => {
                 <small>This includes songs you have liked</small>
               </div>
             </div>
+            {!loading && tracks?.length === 0 && <NoDataFeedback />}
             <div>
               <TrackTable tracks={tracks} />
             </div>
